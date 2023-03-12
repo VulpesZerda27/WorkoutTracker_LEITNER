@@ -1,20 +1,30 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class FileUtils {
-    private final String PATH_TO_PERSON_IMPORT = "./..data/personList.csv";
+    private Long idCounter = 1L;
+    private final String PATH_TO_PERSON_IMPORT = "data/personData.csv";
     private final String PATH_TO_STATISTICS = "";
 
-    /*public List<Person> readPersonsFromCsv() {
-        Path personListPath = Path.of(PATH_TO_PERSON_IMPORT);
-        File personListFile = new File(personListPath);
-        FileReader fileReader = new FileReader(personListFile);
-    }*/
+    public List<Person> readPersonsFromCsv() {
+        List<Person> personList = new ArrayList<>();
+        Scanner scanner;
+        try {
+            scanner = new Scanner(new File(PATH_TO_PERSON_IMPORT));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        while (scanner.hasNextLine()) {
+                String[] personDetails = scanner.nextLine().split(",");
+                personList.add(new Person(idCounter ,personDetails[0], personDetails[1], Integer.parseInt(personDetails[2])));
+                idCounter +=1 ;
+            }
+            return personList;
+        }
 
     public void writeStatisticsToFile(List<Person> persons, List<Workout> workouts){
 
