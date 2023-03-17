@@ -115,12 +115,16 @@ public class FileUtils {
         return averageDuration;
     }
     public double getAverageDurationOfWorkoutByPerson(Long personId, List<? extends Workout> workoutList) {
-        double averageDurationOfWorkoutOfSpecificPerson = 0.0;
+        double workoutCounter = 0.0;
+        double sumOfDurations = 0.0;
+
         for (Workout workout : workoutList) {
             if (workout.getPersonId() == personId) {
-                averageDurationOfWorkoutOfSpecificPerson += workout.getDuration();
+                sumOfDurations += workout.getDuration();
             }
         }
+
+        double averageDurationOfWorkoutOfSpecificPerson = sumOfDurations / workoutCounter;
         return averageDurationOfWorkoutOfSpecificPerson;
     }
     public int getNumberOfBikingWorkoutsByPerson(Long personId, List<Workout> workoutList) {
