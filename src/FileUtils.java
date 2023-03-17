@@ -37,10 +37,10 @@ public class FileUtils {
         for (Person person:persons) {
             printWriter.printf("- - - Person %d - - -\n", personCounter);
             personCounter += 1;
-            printWriter.printf("Name: %s %s\n", person.getFirstName(), person.getLastName());
+            printWriter.printf("Name: %s %s (%d)\n", person.getFirstName(), person.getLastName(), person.getAge());
             printWriter.printf("Number of biking exercises: %d\n", getNumberOfBikingWorkoutsByPerson(person.getId(), workouts));
             printWriter.printf("Number of swimming exercises: %d\n", getNumberOfSwimmingWorkoutsByPerson(person.getId(), workouts));
-            printWriter.printf("Average Duration: %.0f minutes\n", getAverageDurationOfWorkoutByPerson(person.getId(), workouts));
+            printWriter.printf("Average Duration: %d minutes\n", Math.round(getAverageDurationOfWorkoutByPerson(person.getId(), workouts)));
             printWriter.println();
         }
 
@@ -51,8 +51,8 @@ public class FileUtils {
         }
 
         printWriter.printf("- - - Biking - - -\n");
-        printWriter.printf("Average Distance: %.0fm\n", getAverageDistance(bikingWorkouts));
-        printWriter.printf("Average Duration: %.0f minutes\n", getAverageDuration(bikingWorkouts));
+        printWriter.printf("Average Distance: %dm\n", Math.round(getAverageDistance(bikingWorkouts)));
+        printWriter.printf("Average Duration: %d minutes\n", Math.round(getAverageDuration(bikingWorkouts)));
         printWriter.printf("# mountain: %d\n", getNumberOfBikingWorkoutsByType(bikingWorkouts, BikingType.MOUNTAIN));
         printWriter.printf("# road: %d\n", getNumberOfBikingWorkoutsByType(bikingWorkouts, BikingType.ROAD));
         printWriter.println();
@@ -64,8 +64,8 @@ public class FileUtils {
         }
 
         printWriter.printf("- - - Swimming - - -\n");
-        printWriter.printf("Average Distance: %.0f\n", getAverageDistance(swimmingWorkouts));
-        printWriter.printf("Average Duration: %.0f\n", getAverageDuration(swimmingWorkouts));
+        printWriter.printf("Average Distance: %dm\n", Math.round(getAverageDistance(swimmingWorkouts)));
+        printWriter.printf("Average Duration: %d minutes\n", Math.round(getAverageDuration(swimmingWorkouts)));
         printWriter.printf("# backstroke: %d\n", getNumberOfSwimmingWorkoutsByType(swimmingWorkouts, SwimmingType.BACKSTROKE));
         printWriter.printf("# butterfly: %d\n", getNumberOfSwimmingWorkoutsByType(swimmingWorkouts, SwimmingType.BUTTERFLY));
         printWriter.println();
@@ -91,7 +91,7 @@ public class FileUtils {
         return counter;
     }
     public double getAverageDistance (List<? extends Workout> workouts){
-        double workoutCounter = 0.0;
+        int workoutCounter = 0;
         double sumOfDistances = 0.0;
 
         for (Workout workout:workouts) {
@@ -99,11 +99,11 @@ public class FileUtils {
             sumOfDistances += workout.getDistance();
         }
 
-        double averageDistance = sumOfDistances/workoutCounter;
+        double averageDistance = sumOfDistances / workoutCounter;
         return averageDistance;
     }
     public double getAverageDuration(List<? extends Workout> workouts) {
-        double workoutCounter = 0.0;
+        int workoutCounter = 0;
         double sumOfDurations = 0.0;
 
         for (Workout workout : workouts) {
@@ -115,12 +115,13 @@ public class FileUtils {
         return averageDuration;
     }
     public double getAverageDurationOfWorkoutByPerson(Long personId, List<? extends Workout> workoutList) {
-        double workoutCounter = 0.0;
+        int workoutCounter = 0;
         double sumOfDurations = 0.0;
 
         for (Workout workout : workoutList) {
             if (workout.getPersonId() == personId) {
                 sumOfDurations += workout.getDuration();
+                workoutCounter += 1;
             }
         }
 

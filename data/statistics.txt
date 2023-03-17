@@ -1,20 +1,20 @@
 - - - Person 1 - - -
-Name: Martha Schmid
+Name: Martha Schmid (25)
 Number of biking exercises: 3
 Number of swimming exercises: 2
-Average Duration: 135 minutes
+Average Duration: 27 minutes
 
 - - - Person 2 - - -
-Name: Markus Müller
+Name: Markus Müller (23)
 Number of biking exercises: 2
 Number of swimming exercises: 3
-Average Duration: 209 minutes
+Average Duration: 42 minutes
 
 - - - Person 3 - - -
-Name: Marian Barich
+Name: Marian Barich (32)
 Number of biking exercises: 3
 Number of swimming exercises: 2
-Average Duration: 154 minutes
+Average Duration: 31 minutes
 
 - - - Biking - - -
 Average Distance: 4904m
@@ -23,8 +23,8 @@ Average Duration: 33 minutes
 # road: 3
 
 - - - Swimming - - -
-Average Distance: 398
-Average Duration: 33
+Average Distance: 398m
+Average Duration: 33 minutes
 # backstroke: 5
 # butterfly: 2
 
