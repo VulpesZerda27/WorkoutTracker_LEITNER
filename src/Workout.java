@@ -1,8 +1,8 @@
 public abstract class Workout {
-    Long id;
-    int duration;
-    int distance;
-    Long personId;
+    private Long id;
+    private int duration;
+    private int distance;
+    private Long personId;
     Workout(Long id, int duration, int distance, Long personId){
         this.id = id;
         this.duration = duration;
@@ -14,31 +14,15 @@ public abstract class Workout {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public int getDuration() {
         return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 
     public int getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
     public Long getPersonId() {
         return personId;
-    }
-
-    public void setPersonId(Long personId) {
-        this.personId = personId;
     }
 }

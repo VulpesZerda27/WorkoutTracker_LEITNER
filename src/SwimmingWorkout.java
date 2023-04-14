@@ -1,5 +1,5 @@
 public class SwimmingWorkout extends Workout{
-    SwimmingType type;
+    private SwimmingType type;
     SwimmingWorkout(Long id, int duration, int distance, Long personId, SwimmingType type){
         super(id, duration, distance, personId);
         this.type = type;
@@ -7,9 +7,5 @@ public class SwimmingWorkout extends Workout{
 
     public SwimmingType getType() {
         return type;
-    }
-
-    public void setType(SwimmingType type) {
-        this.type = type;
     }
 }
