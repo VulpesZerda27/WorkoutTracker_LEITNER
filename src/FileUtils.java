@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileUtils {
-    private final String PATH_TO_PERSON_IMPORT = "data/personData.csv";
+    private final String PATH_TO_PERSON_IMPORT = "data/person_export.csv";
     private final String PATH_TO_STATISTICS = "data/statistics.txt";
 
     public List<Person> readPersonsFromCsv() {
