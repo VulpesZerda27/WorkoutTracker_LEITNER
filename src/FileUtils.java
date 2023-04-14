@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileUtils {
-    private Long idCounter = 1L;
     private final String PATH_TO_PERSON_IMPORT = "data/personData.csv";
     private final String PATH_TO_STATISTICS = "data/statistics.txt";
 
@@ -17,9 +16,9 @@ public class FileUtils {
             throw new RuntimeException(e);
         }
         while (scanner.hasNextLine()) {
-                String[] personDetails = scanner.nextLine().split(",");
-                personList.add(new Person(idCounter ,personDetails[0], personDetails[1], Integer.parseInt(personDetails[2])));
-                idCounter +=1 ;
+                String[] personDetails = scanner.nextLine().split(";");
+                if(personDetails[0].equals("ID")) continue;
+                personList.add(new Person(Long.parseLong(personDetails[0]) ,personDetails[1], personDetails[2], Integer.parseInt(personDetails[3])));
             }
             return personList;
         }

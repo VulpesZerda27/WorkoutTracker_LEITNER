@@ -1,3 +1,4 @@
-Martha,Schmid,25
-Markus,Müller,23
-Marian,Barich,32
+ID;Firstname;Lastname;Age
+1;Maria;Musterfrau;30
+2;Max;Schuster;50
+3;Ursula;Mayer;22
