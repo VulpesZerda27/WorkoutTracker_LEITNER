@@ -97,9 +97,7 @@ public class FileUtils {
             workoutCounter += 1;
             sumOfDistances += workout.getDistance();
         }
-
-        double averageDistance = sumOfDistances / workoutCounter;
-        return averageDistance;
+        return sumOfDistances / workoutCounter;
     }
     public double getAverageDuration(List<? extends Workout> workouts) {
         int workoutCounter = 0;
@@ -109,9 +107,7 @@ public class FileUtils {
             workoutCounter += 1;
             sumOfDurations += workout.getDuration();
         }
-
-        double averageDuration = sumOfDurations / workoutCounter;
-        return averageDuration;
+        return sumOfDurations / workoutCounter;
     }
     public double getAverageDurationOfWorkoutByPerson(Long personId, List<? extends Workout> workoutList) {
         int workoutCounter = 0;
@@ -123,9 +119,7 @@ public class FileUtils {
                 workoutCounter += 1;
             }
         }
-
-        double averageDurationOfWorkoutOfSpecificPerson = sumOfDurations / workoutCounter;
-        return averageDurationOfWorkoutOfSpecificPerson;
+        return sumOfDurations / workoutCounter;
     }
     public int getNumberOfBikingWorkoutsByPerson(Long personId, List<Workout> workoutList) {
         int bikeWorkoutCounter = 0;
