@@ -26,7 +26,7 @@ public class FileUtils {
     public void writeStatisticsToFile(List<Person> persons, List<Workout> workouts){
         FileWriter fileWriter;
         try {
-            fileWriter = new FileWriter(new File(PATH_TO_STATISTICS));
+            fileWriter = new FileWriter(PATH_TO_STATISTICS);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -114,7 +114,7 @@ public class FileUtils {
         double sumOfDurations = 0.0;
 
         for (Workout workout : workoutList) {
-            if (workout.getPersonId() == personId) {
+            if (workout.getPersonId().equals(personId)) {
                 sumOfDurations += workout.getDuration();
                 workoutCounter += 1;
             }
@@ -124,7 +124,7 @@ public class FileUtils {
     public int getNumberOfBikingWorkoutsByPerson(Long personId, List<Workout> workoutList) {
         int bikeWorkoutCounter = 0;
         for (Workout workout : workoutList) {
-            if (workout.getPersonId() == personId && workout instanceof BikingWorkout) {
+            if (workout.getPersonId().equals(personId) && workout instanceof BikingWorkout) {
                 bikeWorkoutCounter += 1;
             }
         }
@@ -133,7 +133,7 @@ public class FileUtils {
     public int getNumberOfSwimmingWorkoutsByPerson(Long personId, List<Workout> workoutList) {
         int swimmingWorkoutCounter = 0;
         for (Workout workout : workoutList) {
-            if (workout.getPersonId() == personId && workout instanceof  SwimmingWorkout) {
+            if (workout.getPersonId().equals(personId) && workout instanceof  SwimmingWorkout) {
                 swimmingWorkoutCounter += 1;
             }
         }
